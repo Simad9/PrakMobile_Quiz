@@ -53,10 +53,21 @@ class _HomePageState extends State<HomePage> {
                   shrinkWrap: true,
                   children: List.generate(
                     NewsModel.dummyNews.length,
-                    (i) => _itemCard(
-                        context: context,
-                        model: NewsModel.dummyNews[i],
-                        clicked: clicked),
+                    (i) => GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                DetailPage(model: NewsModel.dummyNews[i]),
+                          ),
+                        );
+                      },
+                      child: _itemCard(
+                          context: context,
+                          model: NewsModel.dummyNews[i],
+                          clicked: clicked),
+                    ),
                   ),
                 ),
               ),
@@ -92,14 +103,14 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
-        ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => DetailPage(model: model)));
-            },
-            child: Text("Detail")),
+        // ElevatedButton(
+        //     onPressed: () {
+        //       Navigator.push(
+        //           context,
+        //           MaterialPageRoute(
+        //               builder: (context) => DetailPage(model: model)));
+        //     },
+        //     child: Text("Detail")),
         SizedBox(height: 10),
       ],
     );

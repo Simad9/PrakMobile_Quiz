@@ -30,26 +30,50 @@ class _DetailPageState extends State<DetailPage> {
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Text(widget.model.description),
-            ElevatedButton.icon(
-              onPressed: () {
+            GestureDetector(
+              onTap: () {
                 setState(() {
                   click = true;
                 });
               },
-              icon: Icon(
-                Icons.favorite,
-                color: (click) ? Colors.red : Colors.grey,
-              ),
-              label: Row(
-                spacing: 5,
+              child: Row(
                 children: [
-                  (click)
-                      ? Text((widget.model.likes + 1).toString())
-                      : Text(widget.model.likes.toString()),
-                  Text("likes")
+                  Icon(
+                    Icons.favorite,
+                    color: (click) ? Colors.red : Colors.grey,
+                  ),
+                  Row(
+                    spacing: 5,
+                    children: [
+                      (click)
+                          ? Text((widget.model.likes + 1).toString())
+                          : Text(widget.model.likes.toString()),
+                      Text("likes")
+                    ],
+                  ),
                 ],
               ),
-            ),
+            )
+            // ElevatedButton.icon(
+            //   onPressed: () {
+            //     setState(() {
+            //       click = true;
+            //     });
+            //   },
+            //   icon: Icon(
+            //     Icons.favorite,
+            //     color: (click) ? Colors.red : Colors.grey,
+            //   ),
+            //   label: Row(
+            //     spacing: 5,
+            //     children: [
+            //       (click)
+            //           ? Text((widget.model.likes + 1).toString())
+            //           : Text(widget.model.likes.toString()),
+            //       Text("likes")
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       )),
